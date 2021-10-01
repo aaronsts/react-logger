@@ -1,16 +1,22 @@
 import "./ExpenseItem.scss";
 
-function ExpenseItem() {
-  const expenseDate = new Date(2021, 2, 28);
-  const expenseDescription = "Vitamines";
-  const expenseAmount = 35;
+function ExpenseItem(props) {
+  const date = {
+    day: props.date.toLocaleString("en-US", { day: "2-digit" }),
+    month: props.date.toLocaleString("en-US", { month: "long" }),
+    year: props.date.getFullYear(),
+  };
 
   return (
     <div className="expense-item">
-      <h2>{expenseDate.toISOString()}</h2>
       <div>
-        <h2 className="expense-item-description">{expenseDescription}</h2>
-        <p className="expense-item-price">{expenseAmount} euro</p>
+        <div>{date.day}</div>
+        <div>{date.month}</div>
+        <div>{date.year}</div>
+      </div>
+      <div>
+        <h2 className="expense-item-description">{props.description}</h2>
+        <p className="expense-item-price">{props.amount} euro</p>
       </div>
     </div>
   );

@@ -24,10 +24,20 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const onSubmitData = (newExpenseData) => {
+    const expenseData = {
+      ...newExpenseData,
+      id: Math.random().toString(),
+    };
+
+    console.log(expenseData);
+  };
+
   return (
     <div className="container">
       <h2>Expenses</h2>
-      <Form />
+      <Form onSubmitData={onSubmitData} />
       <ExpenseList expenses={expenses} />
     </div>
   );

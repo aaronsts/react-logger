@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-const Form = () => {
+const Form = (props) => {
+  // State
   const [enteredText, setEnteredText] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
+  // Handlers
   const textChangeHandler = (event) => {
     setEnteredText(event.target.value);
   };
@@ -24,7 +26,11 @@ const Form = () => {
       date: new Date(enteredDate),
     };
 
-    console.log(expenseData);
+    props.onSubmitData(expenseData);
+
+    setEnteredText("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
@@ -32,12 +38,13 @@ const Form = () => {
       <div className="form-wrapper">
         <div className="form-input">
           <label>Title</label>
-          <input type="text" onChange={textChangeHandler} />
+          <input type="text" value={enteredText} onChange={textChangeHandler} />
         </div>
         <div className="form-input">
           <label>Amount</label>
           <input
             type="number"
+            value={enteredAmount}
             min="0.01"
             step="0.01"
             onChange={amountChangeHandler}
@@ -47,6 +54,7 @@ const Form = () => {
           <label>Date</label>
           <input
             type="date"
+            value={enteredDate}
             min="2018-01-01"
             max="2022-12-31"
             onChange={dateChangeHandler}

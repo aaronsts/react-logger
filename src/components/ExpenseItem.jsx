@@ -26,9 +26,7 @@ function ExpenseItem(props) {
         <p className="expense-item-price">{props.amount} euro</p>
       </div>
       <div>
-        <a href="#" onClick={clickHandler}>
-          Change me
-        </a>
+        <button onClick={clickHandler}>Change me</button>
       </div>
     </div>
   );

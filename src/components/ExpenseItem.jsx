@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "./ExpenseItem.scss";
+import React from "react";
 
 function ExpenseItem(props) {
   const date = {
@@ -8,25 +7,16 @@ function ExpenseItem(props) {
     year: props.date.getFullYear(),
   };
 
-  const [newTitle, setNewTitle] = useState(props.description);
-
-  const clickHandler = (even) => {
-    setNewTitle("Hello There");
-  };
-
   return (
     <div className="expense-item">
-      <div>
-        <div>{date.day}</div>
+      <div className="item-date">
+        <div className="day">{date.day}</div>
         <div>{date.month}</div>
         <div>{date.year}</div>
       </div>
-      <div>
-        <h2 className="expense-item-description">{newTitle}</h2>
+      <div className="item-info">
+        <h2 className="expense-item-description">{props.description}</h2>
         <p className="expense-item-price">{props.amount} euro</p>
-      </div>
-      <div>
-        <button onClick={clickHandler}>Change me</button>
       </div>
     </div>
   );
